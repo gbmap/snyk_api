@@ -2,7 +2,6 @@ import os
 from argparse import ArgumentParser
 from datetime import datetime
 from enum import StrEnum, IntEnum, auto
-from typing import Callable
 import json
 import requests
 from loguru import logger
