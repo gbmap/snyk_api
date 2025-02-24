@@ -1,0 +1,121 @@
+query IssuesTable($filterBy: IssueFilters, $first: Int, $after: String, $orderBy: IssueOrder) {
+  issues: issuesV2(
+    filterBy: $filterBy
+    first: $first
+    after: $after
+    orderBy: $orderBy
+  ) {
+    nodes {
+      id
+      sourceRule {
+        __typename
+        ... on Control {
+          id
+          name
+          controlDescription: description
+          resolutionRecommendation
+          securitySubCategories {
+            title
+            category {
+              name
+              framework {
+                name
+              }
+            }
+          }
+          risks
+        }
+        ... on CloudEventRule {
+          id
+          name
+          cloudEventRuleDescription: description
+          sourceType
+          type
+          risks
+          securitySubCategories {
+            title
+            category {
+              name
+              framework {
+                name
+              }
+            }
+          }
+        }
+        ... on CloudConfigurationRule {
+          id
+          name
+          cloudConfigurationRuleDescription: description
+          remediationInstructions
+          serviceType
+          risks
+          securitySubCategories {
+            title
+            category {
+              name
+              framework {
+                name
+              }
+            }
+          }
+        }
+      }
+      createdAt
+      updatedAt
+      dueAt
+      type
+      resolvedAt
+      statusChangedAt
+      projects {
+        id
+        name
+        slug
+        businessUnit
+        riskProfile {
+          businessImpact
+        }
+      }
+      status
+      severity
+      entitySnapshot {
+        id
+        type
+        nativeType
+        name
+        status
+        cloudPlatform
+        cloudProviderURL
+        providerId
+        region
+        resourceGroupExternalId
+        subscriptionExternalId
+        subscriptionName
+        subscriptionTags
+        tags
+        createdAt
+        externalId
+      }
+      serviceTickets {
+        externalId
+        name
+        url
+      }
+      notes {
+        createdAt
+        updatedAt
+        text
+        user {
+          name
+          email
+        }
+        serviceAccount {
+          name
+        }
+      }
+    }
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
+  }
+}

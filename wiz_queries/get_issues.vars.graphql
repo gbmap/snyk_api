@@ -1,0 +1,7 @@
+{
+    "filterBy": {filterBy},
+    "startDate": "{startDate}",
+    "endDate": "{endDate}",
+    "type": "{type}",
+    "interval": "{interval}"
+}

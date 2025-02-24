@@ -1,0 +1,29 @@
+query DashboardWidgetIssuesTrendDataSourceV2($filterBy: IssueTrendFiltersV2, $type: IssueTrendTypeV2, $startDate: DateTime!, $endDate: DateTime!, $interval: TimeInterval) {
+  issuesTrendV2(
+    filterBy: $filterBy
+    type: $type
+    startDate: $startDate
+    endDate: $endDate
+    interval: $interval
+  ) {
+    type
+    total
+    dataPoints {
+      time
+      totalValue
+      informationalSeverityValue
+      lowSeverityValue
+      mediumSeverityValue
+      highSeverityValue
+      criticalSeverityValue
+      openIssueCountByReason {
+        reason
+        count
+      }
+      resolvedIssueCountByReason {
+        reason
+        count
+      }
+    }
+  }
+}
